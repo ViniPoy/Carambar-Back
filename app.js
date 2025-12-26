@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const sequelize = require('./config/database');
 const Joke = require('./models/jokeModel');
 const jokeRoutes = require('./routes/jokeRoutes');
@@ -7,6 +8,7 @@ const swaggerUi = require ('swagger-ui-express');
 
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 
 sequelize.sync({ force: false })
@@ -27,7 +29,12 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:3000'
+                url: 'http://localhost:3000',
+                description: 'Serveur local'
+            },
+            {
+                url: 'https://carambar-back-ttdo.onrender.com',
+                dexcription: 'Serveur de production'
             }
         ]
     },
