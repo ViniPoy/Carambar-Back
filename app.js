@@ -15,9 +15,22 @@ app.use(cors({
 }));
 app.use(express.json());
 
+const initialJokes = [
+    { question: "Quelle est la femelle du rat ?", answer: "La rate !" },
+    { question: "Qu'est-ce qui est jaune et qui court vite ?", answer: "Un citron pressé !" },
+    { question: "Pourquoi les oiseaux volent-ils vers le sud ?", answer: "Parce que c'est trop loin pour y aller à pied !" },
+    { question: "Quel est le comble pour un électricien ?", answer: "De ne pas être au courant !" },
+    { question: "Quel est le sport le plus fruité ?", answer: "La boxe, parce que tu prends des pêches !" }
+];
+
 sequelize.sync({ force: false })
-    .then(() => {
+    .then(async () => {
         console.log('La base SQLite est prête !');
+        const count = await Joke.count();
+        if (count === 0) {
+            await Joke.bulkCreate(initialJokes);
+            console.log('Base de données initialisée avec succès !');
+        }
     })
     .catch((err) => {
         console.error('Erreur de synchro : ', err);
