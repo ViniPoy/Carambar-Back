@@ -32,7 +32,7 @@ exports.getJokeById = async (req, res) => {
 
 exports.getRandomJoke = async (req, res) => {
     try {
-        const joke = await Joke.findOne({ order: [Sequelize.fn('RANDOM')] });
+        const joke = await Joke.findOne({ order: [Sequelize.fn('RANDOM')] }); // Utilisation de la fonction SQL RANDOM via Sequelize pour optimiser la performance.
         res.json(joke);
     } catch (error) {
         res.status(500).json({ error: error.message });

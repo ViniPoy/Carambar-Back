@@ -8,6 +8,7 @@ const swaggerUi = require ('swagger-ui-express');
 
 const app = express();
 
+// Configuration du Middleware CORS pour autoriser les requêtes provenanty du Front-end
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -28,12 +29,14 @@ const initialJokes = [
     { question: "Quel est le comble pour un joueur de bowling ?", answer: "C’est de perdre la boule !" }
 ];
 
+// Initialisation de la base de données au démarrage du serveur
 sequelize.sync({ force: false })
     .then(async () => {
         console.log('La base SQLite est prête !');
+        // On vérifie que la table des blagues est vide (elle le sera forcément à cause de render, au dela de la première utilisation, car il remet le fichier database.sqlite à 0 en redémarrant)
         const count = await Joke.count();
         if (count === 0) {
-            await Joke.bulkCreate(initialJokes);
+            await Joke.bulkCreate(initialJokes); // On insère le tableau de blagues (en une seule requête SQL grâce à bulkCreate)
             console.log('Base de données initialisée avec succès !');
         }
     })
@@ -56,7 +59,7 @@ const swaggerOptions = {
             },
             {
                 url: 'https://carambar-back-ttdo.onrender.com',
-                dexcription: 'Serveur de production'
+                description: 'Serveur de production'
             }
         ]
     },
