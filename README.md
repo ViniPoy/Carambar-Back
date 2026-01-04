@@ -1,47 +1,37 @@
-Carambar & Co - Fullstack Joke App
+Carambar & Co - API REST
 
-    Une application web dynamique permettant de gérer et consulter le catalogue des célèbres blagues Carambar. Ce projet démontre une intégration complète entre un Front-end moderne et une API REST personnalisée.
+    Ceci est l'API backend de l'application Carambar & Co. Elle gère le stockage et la distribution des blagues via une base de données SQLite.
+
 
 Liens du projet
 
-    Interface Web : https://vinipoy.github.io/Carambar-Front/
+    Repo Front-ent : https://github.com/ViniPoy/Carambar-Front
 
-    Documentation API : https://carambar-back-ttdo.onrender.com/api-docs/
+    Documentation Swagger : https://carambar-back-ttdo.onrender.com/api-docs/
 
     Code Source API : https://github.com/ViniPoy/Carambar-Back
 
+
 Stack Technique
 
-    Front-end
+    Node.js & Express : Architecture serveur robuste.
 
-        SASS (SCSS) : Utilisation de mixins, variables et méthodologie BEM pour un code maintenable.
+    SQLite & Sequelize : Base de données relationnelle avec système d'auto-seeding au démarrage.
 
-        Responsive Design : Approche Mobile-First avec gestion des états tactiles (hover).
+    Swagger/OpenAPI : Documentation interactive des endpoints.
 
-        JavaScript ES6+ : Gestion asynchrone des appels API (Fetch, Async/Await) et manipulation dynamique du DOM.
-
-    Back-end
-
-        Node.js & Express : Architecture serveur robuste.
-
-        SQLite & Sequelize : Base de données relationnelle avec système d'auto-seeding au démarrage.
-
-        Swagger/OpenAPI : Documentation interactive des endpoints.
 
 Fonctionnalités clés
 
-    Tirage Aléatoire : Système de "reveal" pour découvrir la réponse d'une blague au clic.
+    CRUD : Lecture et création de blagues
 
-    Catalogue Complet : Modale immersive permettant de parcourir l'intégralité de la base de données avec scroll personnalisé.
+    Cors : Configuré pour accepter les requêtes provenant du domaine front-end.
 
-    Contribution : Formulaire sécurisé pour soumettre de nouvelles blagues (validation et retours utilisateurs en temps réel).
-
-    UX Optimisée : Transitions fluides (opacité/visibilité) et gestion du "Sticky Hover" sur mobile.
 
 Installation
 
-    Cloner le projet : git clone [URL]
+    1. Cloner le projet : git clone https://github.com/ViniPoy/Carambar-Back.git
 
-    Installer les dépendances : npm install
+    2. Installer les dépendances : npm install
 
-    Lancer le serveur : npm run dev
+    3. Lancer le serveur : npm run dev
